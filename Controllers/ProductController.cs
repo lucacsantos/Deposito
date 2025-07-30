@@ -18,11 +18,6 @@ namespace Deposito.Controllers
             _mediator = mediator;
         }
 
-        //[HttpGet]
-        //public async Task<ActionResult<IEnumerable<Product>>> GetAllProduct()
-        //{
-        //    var products = 
-        //}
         [HttpPost]
         public async Task<ActionResult> Create(CreateProductRequest request)
         {
@@ -52,6 +47,40 @@ namespace Deposito.Controllers
             {
 
                 throw;
+            }
+        }
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> Delete(Guid id)
+        {
+            try
+            {
+                await _mediator.Send(new DeleteProductRequest(id));
+                return NoContent();
+            }
+            catch (Exception e)
+            {
+                return NotFound(e.Message);
+            }
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<CreateProductResponse>>> GetAll()
+        {
+            var result = await _mediator.Send(new GetAllProductsQuery());
+            return Ok(result);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<CreateProductResponse>> GetById(Guid id)
+        {
+            try
+            {
+                var result = await _mediator.Send(new GetProductByIdQuery(id));
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                return NotFound(e.Message);
             }
         }
     }
