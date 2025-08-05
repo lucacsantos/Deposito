@@ -1,5 +1,5 @@
-﻿using Deposito.Domain.Commands.Handler;
-using Deposito.Domain.Commands.Request;
+﻿using Deposito.Domain.Commands.Handlers;
+using Deposito.Domain.Commands.Request.Product;
 using Deposito.Domain.Commands.Responses;
 using Deposito.Domain.Entites;
 using MediatR;

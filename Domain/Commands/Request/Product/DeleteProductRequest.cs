@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Deposito.Domain.Commands.Request
+namespace Deposito.Domain.Commands.Request.Product
 {
     public class DeleteProductRequest : IRequest<Unit>
     {

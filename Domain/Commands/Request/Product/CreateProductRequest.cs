@@ -1,7 +1,7 @@
-﻿using Deposito.Domain.Commands.Responses;
+﻿using Deposito.Domain.Commands.Responses.Product;
 using MediatR;
 
-namespace Deposito.Domain.Commands.Request
+namespace Deposito.Domain.Commands.Request.Product
 {
     public class CreateProductRequest : IRequest<CreateProductResponse>
     {

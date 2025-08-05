@@ -1,9 +1,9 @@
-﻿using Deposito.Domain.Commands.Request;
-using Deposito.Domain.Commands.Responses;
+﻿using Deposito.Domain.Commands.Request.Product;
+using Deposito.Domain.Commands.Responses.Product;
 using Deposito.Domain.Entites;
 using MediatR;
 
-namespace Deposito.Domain.Commands.Handler
+namespace Deposito.Domain.Commands.Handlers
 {
     public class CreateProductHandler : IRequestHandler<CreateProductRequest, CreateProductResponse>
     {

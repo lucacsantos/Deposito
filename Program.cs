@@ -1,4 +1,4 @@
-using Deposito.Domain.Commands.Handler;
+using Deposito.Domain.Commands.Handlers;
 
 var builder = WebApplication.CreateBuilder(args);
 
