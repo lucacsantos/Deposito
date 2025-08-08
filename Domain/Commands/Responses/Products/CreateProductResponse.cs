@@ -1,9 +1,6 @@
-﻿using Deposito.Domain.Commands.Responses.Product;
-using MediatR;
-
-namespace Deposito.Domain.Commands.Request.Product
+﻿namespace Deposito.Domain.Commands.Responses.Products
 {
-    public class UpdateProductRequest : IRequest<UpdateProductResponse>
+    public class CreateProductResponse
     {
         public Guid Id { get; set; }
         public string Name { get; set; } = string.Empty;

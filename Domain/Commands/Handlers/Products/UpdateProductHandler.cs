@@ -1,23 +1,26 @@
 ﻿using Deposito.Domain.Commands.Handlers;
 using Deposito.Domain.Commands.Request.Product;
-using Deposito.Domain.Commands.Responses.Product;
+using Deposito.Domain.Commands.Responses.Products;
 using Deposito.Domain.Entites;
 using MediatR;
 
 namespace Deposito.Domain.Commands.Handlers
 {
-    public class GetProductsByIdHandler : IRequestHandler<GetProductByIdQuery, CreateProductResponse>
+    public class UpdateProductHandler : IRequestHandler<UpdateProductRequest, UpdateProductResponse>
     {
         private static readonly List<Product> products = CreateProductHandler.products;
-       
-        public Task<CreateProductResponse> Handle(GetProductByIdQuery request, CancellationToken cancellationToken)
+
+        public Task<UpdateProductResponse> Handle(UpdateProductRequest request, CancellationToken cancellationToken)
         {
             var product = products.FirstOrDefault(p => p.Id == request.Id);
-
             if (product is null)
-                throw new Exception("Produto não encontrado");
+                throw new Exception("Produto não encontrado.");
+           
+            product.Name = request.Name;
+            product.Price = request.Price;
+            product.ImageURL = request.ImageURL;
 
-            return Task.FromResult(new CreateProductResponse
+            return Task.FromResult(new UpdateProductResponse
             {
                 Id = product.Id,
                 Name = product.Name,

@@ -1,4 +1,4 @@
-﻿using Deposito.Domain.Commands.Responses.Product;
+﻿using Deposito.Domain.Commands.Responses.Products;
 using MediatR;
 
 namespace Deposito.Domain.Commands.Request.Product

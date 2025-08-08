@@ -1,4 +1,4 @@
-﻿namespace Deposito.Domain.Commands.Responses.Product
+﻿namespace Deposito.Domain.Commands.Responses.Products
 {
     public class UpdateProductResponse
     {
