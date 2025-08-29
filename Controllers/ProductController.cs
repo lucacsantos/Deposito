@@ -28,7 +28,6 @@ namespace Deposito.Controllers
             }
             catch (Exception)
             {
-
                 throw;
             }
             
@@ -45,7 +44,6 @@ namespace Deposito.Controllers
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -55,7 +53,7 @@ namespace Deposito.Controllers
             try
             {
                 await _mediator.Send(new DeleteProductRequest(id));
-                return NoContent();
+                return Ok();
             }
             catch (Exception e)
             {

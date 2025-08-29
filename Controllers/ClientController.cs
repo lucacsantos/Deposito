@@ -1,6 +1,6 @@
 ﻿using Deposito.Domain.Commands.Request.Clients;
+using Deposito.Domain.Commands.Responses.Clients;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Deposito.Controllers
@@ -27,8 +27,59 @@ namespace Deposito.Controllers
             }
             catch (Exception)
             {
+                throw;
+            }
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> Update(Guid id, [FromBody] UpdateClientRequest request)
+        {
+            if (id != request.Id)
+                return BadRequest("O Id não existe");
+            try
+            {
+                var result = await _mediator.Send(request);
+                return Ok(result);
+            }
+            catch (Exception)
+            {
 
                 throw;
+            }
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<CreateClientResponse>> GetAll()
+        {
+            var result = await _mediator.Send(new GetAllClientsQuery());
+            return Ok(result);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<CreateClientResponse>> GetById(Guid id)
+        {
+            try
+            {
+                var result = await _mediator.Send(new GetClientByIdQuery(id));
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                return NotFound(e.Message);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> Delete(Guid id)
+        {
+            try
+            {
+                await _mediator.Send(new DeleteClientRequest(id));
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return NotFound(e.Message);
             }
         }
     }
