@@ -14,7 +14,7 @@ namespace Deposito.Domain.Commands.Handlers
         {
             var response = products.Select(p => new CreateProductResponse
             {
-                Id = p.Id,
+                Id = Guid.Parse(p.Id),
                 Name = p.Name,
                 ImageURL = p.ImageURL,
                 Price = p.Price,

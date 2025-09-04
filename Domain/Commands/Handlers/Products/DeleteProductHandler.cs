@@ -12,7 +12,7 @@ namespace Deposito.Domain.Commands.Handlers
 
         public Task<Unit> Handle(DeleteProductRequest request, CancellationToken cancellationToken)
         {
-            var product = products.FirstOrDefault(p => p.Id == request.Id);
+            var product = products.FirstOrDefault(p => Guid.Parse(p.Id )== request.Id);
 
             if (product is null)
                 throw new Exception("Produto não encontrado");

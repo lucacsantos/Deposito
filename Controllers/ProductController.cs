@@ -1,6 +1,7 @@
 ﻿using Deposito.Domain.Commands.Request.Product;
 using Deposito.Domain.Commands.Responses.Products;
 using Deposito.Domain.Entites;
+using Deposito.Services;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,10 +13,12 @@ namespace Deposito.Controllers
     public class ProductController : ControllerBase
     {
         private readonly IMediator _mediator;
+       
 
-        public ProductController(IMediator mediator)
+        public ProductController(IMediator mediator, ProductFirestoreService service)
         {
             _mediator = mediator;
+           
         }
 
         [HttpPost]
