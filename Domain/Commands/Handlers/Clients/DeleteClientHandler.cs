@@ -1,23 +1,28 @@
 ﻿using Deposito.Domain.Commands.Request.Clients;
-using Deposito.Domain.Entites;
+using Deposito.Services;
 using MediatR;
 
 namespace Deposito.Domain.Commands.Handlers.Clients
 {
     public class DeleteClientHandler : IRequestHandler<DeleteClientRequest, Unit>
     {
-        private static readonly List<Client> clients = CreateClientHandler.clients;
+        private readonly ClientFirestoreService _clientFirestoreService;
 
-        public Task<Unit> Handle(DeleteClientRequest request, CancellationToken cancellationToken)
+        public DeleteClientHandler(ClientFirestoreService clientFirestoreService)
         {
-            var client = clients.FirstOrDefault(clients => clients.Id == request.Id);
+            _clientFirestoreService = clientFirestoreService;
+        }
+
+        public async Task<Unit> Handle(DeleteClientRequest request, CancellationToken cancellationToken)
+        {
+            var client = await _clientFirestoreService.GetClientAsyncId(request.Id);
 
             if (client is null)
                 throw new Exception("Cliente não encontrado");
-            
-            clients.Remove(client);
 
-            return Task.FromResult(Unit.Value);
+            await _clientFirestoreService.DeleteClientAsync(request.Id);
+
+            return Unit.Value;
         }
     }
 }

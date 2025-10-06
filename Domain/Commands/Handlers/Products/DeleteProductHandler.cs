@@ -1,26 +1,28 @@
-﻿using Deposito.Domain.Commands.Handlers;
-using Deposito.Domain.Commands.Request.Product;
-using Deposito.Domain.Commands.Responses;
-using Deposito.Domain.Entites;
+﻿using Deposito.Domain.Commands.Request.Product;
+using Deposito.Services;
 using MediatR;
 
 namespace Deposito.Domain.Commands.Handlers
 {
-    public class DeleteProductHandler : IRequestHandler<DeleteProductRequest,Unit>
+    public class DeleteProductHandler : IRequestHandler<DeleteProductRequest, Unit>
     {
-        private static readonly List<Product> products = CreateProductHandler.products;
+        private readonly ProductFirestoreService _productFirestoreService;
 
-        public Task<Unit> Handle(DeleteProductRequest request, CancellationToken cancellationToken)
+        public DeleteProductHandler(ProductFirestoreService productFirestoreService)
         {
-            var product = products.FirstOrDefault(p => Guid.Parse(p.Id )== request.Id);
+            _productFirestoreService = productFirestoreService;
+        }
+
+        public async Task<Unit> Handle(DeleteProductRequest request, CancellationToken cancellationToken)
+        {
+            var product = await _productFirestoreService.GetProductsAsyncId(request.Id);
 
             if (product is null)
                 throw new Exception("Produto não encontrado");
 
-            products.Remove(product);
+            await _productFirestoreService.DeleteProductAsync(request.Id);
 
-            return Task.FromResult(Unit.Value);
-
+            return Unit.Value;
         }
     }
 }

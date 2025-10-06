@@ -1,16 +1,21 @@
 ﻿using Deposito.Domain.Commands.Request.Clients;
 using Deposito.Domain.Commands.Responses.Clients;
-using Deposito.Domain.Entites;
+using Deposito.Services;
 using MediatR;
 
 namespace Deposito.Domain.Commands.Handlers.Clients
 {
     public class GetAllClientsHandler : IRequestHandler<GetAllClientsQuery, IEnumerable<CreateClientResponse>>
     {
-        private static readonly List<Client> clients = CreateClientHandler.clients;
+        private readonly ClientFirestoreService _clientFirestoreService;
 
-        public Task<IEnumerable<CreateClientResponse>> Handle(GetAllClientsQuery request, CancellationToken cancellationToken)
+        public GetAllClientsHandler(ClientFirestoreService clientFirestoreService)
+            => _clientFirestoreService = clientFirestoreService;
+
+        public async Task<IEnumerable<CreateClientResponse>> Handle(GetAllClientsQuery request, CancellationToken cancellationToken)
         {
+            var clients = await _clientFirestoreService.GetClientsAsync();
+
             var response = clients.Select(c => new CreateClientResponse
             {
                 Id = c.Id,
@@ -20,7 +25,7 @@ namespace Deposito.Domain.Commands.Handlers.Clients
                 Phone = c.Phone
             });
 
-            return Task.FromResult(response);
+            return response;
         }
     }
 } 

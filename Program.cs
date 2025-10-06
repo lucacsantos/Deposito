@@ -17,6 +17,7 @@ builder.Services.AddSingleton<FirestoreDb>(sp =>
 });
 
 builder.Services.AddSingleton<ProductFirestoreService>();
+builder.Services.AddSingleton<ClientFirestoreService>();
 
 builder.Services.AddMediatR(cfg =>
 {

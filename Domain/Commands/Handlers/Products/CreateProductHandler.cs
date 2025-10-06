@@ -8,13 +8,10 @@ namespace Deposito.Domain.Commands.Handlers
 {
     public class CreateProductHandler : IRequestHandler<CreateProductRequest, CreateProductResponse>
     {
-        public static readonly List<Product> products = new();
         private readonly ProductFirestoreService _productFirestoreService;
 
         public CreateProductHandler(ProductFirestoreService productFirestoreService)
-        {
-            _productFirestoreService = productFirestoreService;
-        }
+            => _productFirestoreService = productFirestoreService;
 
         public async Task<CreateProductResponse> Handle(CreateProductRequest request, CancellationToken cancellationToken)
         {
@@ -30,7 +27,7 @@ namespace Deposito.Domain.Commands.Handlers
 
             return new CreateProductResponse
             {
-                Id = Guid.Parse(product.Id),
+                Id = product.Id,
                 Name = product.Name,
                 Price = product.Price,
                 ImageURL = product.ImageURL

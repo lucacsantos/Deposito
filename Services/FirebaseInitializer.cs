@@ -2,14 +2,16 @@
 using Google.Apis.Auth.OAuth2;
 using Google.Cloud.Firestore;
 using Google.Cloud.Firestore.V1;
+using Microsoft.AspNetCore.DataProtection.KeyManagement;
 
 namespace Deposito.Services
 {
     public class FirebaseInitializer
     {
         public static FirestoreDb InitializeFirestore()
+
         {
-            var credential = GoogleCredential.FromFile("Services/firebase-key.json");
+            var credential = GoogleCredential.FromFile("Services/firebase-key.json"); 
 
             if (FirebaseApp.DefaultInstance == null)
             {
@@ -25,6 +27,7 @@ namespace Deposito.Services
             };
 
             return FirestoreDb.Create("deposito-db", builder.Build());
+
         }
     }
 }

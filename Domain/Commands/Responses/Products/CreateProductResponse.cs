@@ -2,7 +2,7 @@
 {
     public class CreateProductResponse
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
         public double Price { get; set; }
         public string ImageURL { get; set; } = string.Empty;
