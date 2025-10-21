@@ -1,5 +1,5 @@
-﻿using Deposito.Domain.Commands.Request.Product;
-using Deposito.Domain.Commands.Responses.Products;
+﻿using Deposito.Domain.Commands.Request;
+using Deposito.Domain.Commands.Responses;
 using Deposito.Services;
 using MediatR;
 

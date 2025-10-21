@@ -1,10 +1,10 @@
-﻿using Deposito.Domain.Commands.Request.Clients;
-using Deposito.Domain.Commands.Responses.Clients;
+﻿using Deposito.Domain.Commands.Request;
+using Deposito.Domain.Commands.Responses;
 using Deposito.Services;
 using MediatR;
 
-namespace Deposito.Domain.Commands.Handlers.Clients
-{
+namespace Deposito.Domain.Commands.Handlers;
+
     public class GetClientsByIdHandler : IRequestHandler<GetClientByIdQuery, CreateClientResponse>
     {
         private readonly ClientFirestoreService _clientFirestoreService;
@@ -30,4 +30,3 @@ namespace Deposito.Domain.Commands.Handlers.Clients
             };
         }
     }
-}

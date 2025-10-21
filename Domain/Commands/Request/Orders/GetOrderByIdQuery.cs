@@ -3,11 +3,11 @@ using MediatR;
 
 namespace Deposito.Domain.Commands.Request
 {
-    public class GetClientByIdQuery : IRequest<CreateClientResponse>
+    public class GetOrderByIdQuery : IRequest<CreateOrderResponse>
     {
         public Guid Id { get; set; }
 
-        public GetClientByIdQuery(Guid id)
+        public GetOrderByIdQuery(Guid id)
         {
             Id = id;
         }

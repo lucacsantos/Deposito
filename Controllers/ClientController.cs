@@ -1,5 +1,5 @@
-﻿using Deposito.Domain.Commands.Request.Clients;
-using Deposito.Domain.Commands.Responses.Clients;
+﻿using Deposito.Domain.Commands.Request;
+using Deposito.Domain.Commands.Responses;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

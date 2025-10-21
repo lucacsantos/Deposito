@@ -1,31 +1,31 @@
-﻿using Deposito.Domain.Commands.Request.Clients;
-using Deposito.Domain.Commands.Responses.Clients;
+﻿using Deposito.Domain.Commands.Request;
+using Deposito.Domain.Commands.Responses;
 using Deposito.Services;
 using MediatR;
 
-namespace Deposito.Domain.Commands.Handlers.Clients
+namespace Deposito.Domain.Commands.Handlers;
+
+public class GetAllClientsHandler : IRequestHandler<GetAllClientsQuery, IEnumerable<CreateClientResponse>>
 {
-    public class GetAllClientsHandler : IRequestHandler<GetAllClientsQuery, IEnumerable<CreateClientResponse>>
+    private readonly ClientFirestoreService _clientFirestoreService;
+
+    public GetAllClientsHandler(ClientFirestoreService clientFirestoreService)
+        => _clientFirestoreService = clientFirestoreService;
+
+    public async Task<IEnumerable<CreateClientResponse>> Handle(GetAllClientsQuery request, CancellationToken cancellationToken)
     {
-        private readonly ClientFirestoreService _clientFirestoreService;
+        var clients = await _clientFirestoreService.GetClientsAsync();
 
-        public GetAllClientsHandler(ClientFirestoreService clientFirestoreService)
-            => _clientFirestoreService = clientFirestoreService;
-
-        public async Task<IEnumerable<CreateClientResponse>> Handle(GetAllClientsQuery request, CancellationToken cancellationToken)
+        var response = clients.Select(c => new CreateClientResponse
         {
-            var clients = await _clientFirestoreService.GetClientsAsync();
+            Id = c.Id,
+            Email = c.Email,
+            FirstName = c.FirstName,
+            LastName = c.LastName,
+            Phone = c.Phone
+        });
 
-            var response = clients.Select(c => new CreateClientResponse
-            {
-                Id = c.Id,
-                Email = c.Email,
-                FirstName = c.FirstName,
-                LastName = c.LastName,
-                Phone = c.Phone
-            });
-
-            return response;
-        }
+        return response;
     }
-} 
+}
+

@@ -1,4 +1,4 @@
-﻿namespace Deposito.Domain.Commands.Responses.Clients
+﻿namespace Deposito.Domain.Commands.Responses
 {
     public class CreateClientResponse
     {

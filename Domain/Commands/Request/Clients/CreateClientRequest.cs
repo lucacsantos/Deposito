@@ -1,7 +1,7 @@
-﻿using Deposito.Domain.Commands.Responses.Clients;
+﻿using Deposito.Domain.Commands.Responses;
 using MediatR;
 
-namespace Deposito.Domain.Commands.Request.Clients
+namespace Deposito.Domain.Commands.Request
 {
     public class CreateClientRequest : IRequest<CreateClientResponse>
     {

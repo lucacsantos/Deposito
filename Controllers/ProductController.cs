@@ -1,9 +1,7 @@
-﻿using Deposito.Domain.Commands.Request.Product;
-using Deposito.Domain.Commands.Responses.Products;
-using Deposito.Domain.Entites;
+﻿using Deposito.Domain.Commands.Request;
+using Deposito.Domain.Commands.Responses;
 using Deposito.Services;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Deposito.Controllers

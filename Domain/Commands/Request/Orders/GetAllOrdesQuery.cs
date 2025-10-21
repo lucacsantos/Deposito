@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Deposito.Domain.Commands.Request
 {
-    public class GetAllClientsQuery : IRequest<IEnumerable<CreateClientResponse>>
+    public class GetAllOrdesQuery : IRequest<IEnumerable<CreateOrderResponse>>
     {
     }
 }

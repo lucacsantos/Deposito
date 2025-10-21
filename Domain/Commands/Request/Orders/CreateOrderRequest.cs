@@ -1,23 +1,13 @@
-﻿using Google.Cloud.Firestore;
+﻿using Deposito.Domain.Commands.Responses;
+using MediatR;
 
-namespace Deposito.Domain.Entites
+namespace Deposito.Domain.Commands.Request
 {
-    [FirestoreData]
-    public class Order
+    public class CreateOrderRequest : IRequest<CreateOrderResponse>
     {
-        [FirestoreDocumentId]
-        public string Id { get; set; } = string.Empty;
-
-        [FirestoreProperty]
         public string Addres { get; set; } = string.Empty;
-        
-        [FirestoreProperty]
         public bool InStorePickup { get; set; }
-        
-        [FirestoreProperty]
         public string PaymentMethod { get; set; } = string.Empty;
-        
-        [FirestoreProperty]
         public string Status { get; set; } = string.Empty;
         // public Product? ProductId { get; set; } DEPOIS TEM QUE VER COMO VAI SER TRATADO
         // public Client? ClientId { get; set; } DEPOIS TEM QUE VER COMO VAI SER TRATADO

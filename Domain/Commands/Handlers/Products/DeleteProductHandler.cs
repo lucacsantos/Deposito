@@ -1,4 +1,4 @@
-﻿using Deposito.Domain.Commands.Request.Product;
+﻿using Deposito.Domain.Commands.Request;
 using Deposito.Services;
 using MediatR;
 
