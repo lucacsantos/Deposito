@@ -46,5 +46,27 @@ namespace Deposito.Services
 
             return null;
         }
+
+        public async Task UpdateOrderAsync(Order order)
+        {
+            DocumentReference orderRef = _db.Collection("order").Document(order.Id.ToString());
+
+            var update = new Dictionary<string, object>
+            {
+                { "Addres", order.Addres },
+                { "InStorePickup", order.InStorePickup },
+                { "PaymentMethod", order.PaymentMethod },
+                { "Status", order.Status }
+            };
+
+             await orderRef.UpdateAsync(update);
+        }
+
+        public async Task DeleteOrderAsync(Guid id)
+        {
+            DocumentReference orderRef = _db.Collection("order").Document(id.ToString());
+            DocumentSnapshot snapshot = await orderRef.GetSnapshotAsync();
+            await orderRef.DeleteAsync();
+        }
     }
 }

@@ -1,9 +1,6 @@
 ﻿using Deposito.Domain.Commands.Request;
 using Deposito.Domain.Commands.Responses;
-using Deposito.Domain.Entites;
 using MediatR;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Deposito.Controllers
@@ -32,6 +29,37 @@ namespace Deposito.Controllers
             {
 
                 throw;
+            }
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> Update (Guid id, [FromBody] UpdateOrderRequest request)
+        {
+            if (id != request.Id)
+                return BadRequest("O Id não esxiste");
+            try
+            {
+                var result = await _mediator.Send(request);
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> Delete(Guid id)
+        {
+            try
+            {
+                await _mediator.Send(new DeleteOrderRequest(id));
+                return Ok();
+            }
+            catch (Exception e)
+            {
+
+                return NotFound(e.Message);
             }
         }
 
