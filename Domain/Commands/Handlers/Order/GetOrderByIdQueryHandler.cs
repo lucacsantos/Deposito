@@ -23,7 +23,7 @@ namespace Deposito.Domain.Commands.Handlers
             return new CreateOrderResponse()
             {
                 Id = order.Id,
-                Addres = order.Addres,
+                Addres = order.Address,
                 InStorePickup = order.InStorePickup,
                 PaymentMethod = order.PaymentMethod,
                 Status = order.Status,

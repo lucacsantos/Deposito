@@ -1,5 +1,8 @@
 using Deposito.Domain.Commands.Handlers;
+using Deposito.Domain.Validators;
 using Deposito.Services;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Google.Cloud.Firestore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +13,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddFluentValidationClientsideAdapters();
+
+builder.Services.AddValidatorsFromAssemblyContaining<CreateOrderRequestValidator>();
 
 builder.Services.AddSingleton<FirestoreDb>(sp =>
 {

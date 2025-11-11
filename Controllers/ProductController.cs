@@ -20,7 +20,7 @@ namespace Deposito.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create(CreateProductRequest request)
+        public async Task<ActionResult> Create([FromBody] CreateProductRequest request)
         {
             var result = await _mediator.Send(request);
             try

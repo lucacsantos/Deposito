@@ -53,7 +53,7 @@ namespace Deposito.Services
 
             var update = new Dictionary<string, object>
             {
-                { "Addres", order.Addres },
+                { "Address", order.Address },
                 { "InStorePickup", order.InStorePickup },
                 { "PaymentMethod", order.PaymentMethod },
                 { "Status", order.Status }

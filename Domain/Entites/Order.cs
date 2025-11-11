@@ -9,7 +9,7 @@ namespace Deposito.Domain.Entites
         public string Id { get; set; } = string.Empty;
 
         [FirestoreProperty]
-        public string Addres { get; set; } = string.Empty;
+        public string Address { get; set; } = string.Empty;
         
         [FirestoreProperty]
         public bool InStorePickup { get; set; }

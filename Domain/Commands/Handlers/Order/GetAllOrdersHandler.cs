@@ -19,7 +19,7 @@ namespace Deposito.Domain.Commands.Handlers
             var response = order.Select(o => new CreateOrderResponse
             {
                 Id = o.Id,
-                Addres = o.Addres,
+                Addres = o.Address,
                 InStorePickup = o.InStorePickup,
                 PaymentMethod = o.PaymentMethod, 
                 Status = o.Status

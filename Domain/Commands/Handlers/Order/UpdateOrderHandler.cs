@@ -19,7 +19,7 @@ namespace Deposito.Domain.Commands.Handlers
             if(order is null)
                 throw new Exception("Pedido não encontrado.");
 
-            order.Addres = request.Addres;
+            order.Address = request.Address;
             order.InStorePickup = request.InStorePickup;
             order.PaymentMethod = request.PaymentMethod;
             order.Status = request.Status;
@@ -29,7 +29,7 @@ namespace Deposito.Domain.Commands.Handlers
             return new UpdateOrderResponse
             {
                 Id = Guid.Parse(order.Id),
-                Addres = order.Addres,
+                Addres = order.Address,
                 InStorePickup = order.InStorePickup,
                 PaymentMethod = request.PaymentMethod,
                 Status = request.Status

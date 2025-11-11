@@ -19,7 +19,7 @@ namespace Deposito.Domain.Commands.Handlers
             var order = new Order
             {
                 Id = Guid.NewGuid().ToString(),
-                Addres = request.Addres,
+                Address = request.Address,
                 InStorePickup = request.InStorePickup,
                 PaymentMethod = request.PaymentMethod,
                 Status = request.Status
@@ -30,7 +30,7 @@ namespace Deposito.Domain.Commands.Handlers
             return new CreateOrderResponse
             {
                 Id = order.Id,
-                Addres = order.Addres, 
+                Addres = order.Address, 
                 Status = order.Status,
                 InStorePickup = order.InStorePickup,
                 PaymentMethod = order.PaymentMethod,
