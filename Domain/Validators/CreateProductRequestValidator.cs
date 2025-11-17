@@ -7,7 +7,7 @@ namespace Deposito.Domain.Validators
     {
         public CreateProductRequestValidator() 
         {
-            RuleFor(x => x.Name).NotEmpty().WithMessage("Nome do produto é obrigatório.");
+            RuleFor(x => x.Name).NotEmpty().WithMessage("Nome do produto é obrigatório.").NotNull().NotEqual("string");
         }
     }
 }

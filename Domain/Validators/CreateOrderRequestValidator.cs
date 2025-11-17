@@ -7,9 +7,9 @@ namespace Deposito.Domain.Validators
     {
         public CreateOrderRequestValidator()
         {
-            RuleFor(x => x.Address).NotEmpty().WithMessage("O endereço é obrigatório.");
-            RuleFor(x => x.PaymentMethod).NotEmpty().WithMessage("O método de pagamento é obrigatório.");
-            RuleFor(x => x.Status).NotEmpty().WithMessage("Informe se a retirada é na loja ou na entrega.");
+            RuleFor(x => x.Address).NotEmpty().WithMessage("O endereço é obrigatório.").NotNull().NotEqual("string");
+            RuleFor(x => x.PaymentMethod).NotEmpty().WithMessage("O método de pagamento é obrigatório.").NotNull().NotEqual("string");
+            RuleFor(x => x.Status).NotEmpty().WithMessage("Informe se a retirada é na loja ou na entrega.").NotNull().NotEqual("string");
         }
 
     }
