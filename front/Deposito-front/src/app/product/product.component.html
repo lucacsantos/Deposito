@@ -1,0 +1,23 @@
+<h2>Products</h2>
+
+<table class="table table-striped">
+  <thead class="table-dark">
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Image</th>
+    </tr>
+  </thead>
+
+  <tbody *ngIf="products && products.length">
+    <tr *ngFor="let product of productList">
+      <th>{{product.id}}</th>
+      <th>{{product.name}}</th>
+      <th>{{product.price}}</th>
+      <th>{{product.imageURL}}</th>
+    </tr>
+
+  </tbody>
+
+</table>
