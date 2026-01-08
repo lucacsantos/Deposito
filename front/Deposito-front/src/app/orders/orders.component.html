@@ -1,0 +1,24 @@
+<h2>Orders</h2>
+
+<div>
+  <table class="table table-striped">
+    <thead class="table-dark">
+      <tr>
+        <td>Address</td>
+        <td>inStorePickup</td>
+        <td>paymentMethod</td>
+        <td>status</td>
+      </tr>
+    </thead>
+
+    <tbody *ngIf="orders && orderList.length">
+      <tr *ngFor="let order of orderList">
+        <td>{{order.addres}}</td>
+        <td>{{order.inStorePickup}}</td>
+        <td>{{order.paymentMethod}}</td>
+        <td>{{order.status}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

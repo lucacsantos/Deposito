@@ -1,0 +1,20 @@
+<h2>Clients</h2>
+
+<table class=" table table-striped">
+  <thead class="table-dark">
+    <tr>
+      <td>Name</td>
+      <td>Email</td>
+      <td>Phone</td>
+    </tr>
+  </thead>
+
+  <tbody *ngIf="clients && clients.length">
+    <tr *ngFor="let client of clientList">
+      <th>{{client.firstName + " " + client.lastName}}</th>
+      <th>{{client.email}}</th>
+      <th>{{client.phone}}</th>
+    </tr>
+  </tbody>
+
+</table>

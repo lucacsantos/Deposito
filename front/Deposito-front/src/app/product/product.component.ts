@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule,  } from "@angular/common";
-import { ProductService } from './services/product.service';
+
 import { Product } from '../models/Product';
+import { ProductService } from '../services/product-service/product.service';
 
 @Component({
   selector: 'app-product',
@@ -30,9 +31,7 @@ export class ProductComponent implements OnInit {
   constructor(private service: ProductService) { }
 
   ngOnInit() {
-    this.getProducts()
-    console.log(this.products)
-    
+    this.getProducts();
   }
 
   public filterProduct(filter: string): Product[]{
