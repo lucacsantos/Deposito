@@ -14,6 +14,14 @@ public getClients(): Observable<Client[]>{
   return this.http.get<Client[]>('https://localhost:7036/api/client');
 }
 
+public create(client: Client): Observable<Client>{
+  return this.http.post<Client>('https://localhost:7036/api/client', client);
+}
+
+public delete(id: string) {
+  return this.http.delete<void>(`https://localhost:7036/api/client/${id}`)
+}
+
 
 
 }

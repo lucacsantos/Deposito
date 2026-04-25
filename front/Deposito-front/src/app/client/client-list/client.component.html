@@ -1,0 +1,48 @@
+<h2>Clients</h2>
+
+<button matButton [matMenuTriggerFor]="menu">Menu</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item routerLink="/clients/create">Criar cliente</button>
+  <button mat-menu-item>Item 2</button>
+</mat-menu>
+
+
+<table class=" table table-striped">
+  <thead class="table-dark">
+    <tr>
+      <td>Name</td>
+      <td>Email</td>
+      <td>Phone</td>
+      <td></td>
+    </tr>
+  </thead>
+
+  <tbody *ngIf="clients && clients.length">
+    <tr *ngFor="let client of clientList">
+      <td>{{client.firstName + " " + client.lastName}}</td>
+      <td>{{client.email}}</td>
+      <td>{{client.phone}}</td>
+      <td>
+        <button type="button" class="btn btn-primary btn-sm me-2"  tooltip="Editar">
+        <i class="fa-regular fa-pen-to-square" ></i>
+        </button>
+        <button type="button" class="btn btn-danger btn-sm" tooltip="Excluir"  (click)="openModal(template,client.id)" >
+          <i class="fa-regular fa-trash-can"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<ng-template #template>
+  <div class="modal-body text-center">
+    <p>Tem certeza que deseja excluir cliente?</p>
+
+    <button class="btn btn-danger" (click)="confirmDelete()">
+      Sim
+    </button>
+    <button class="btn btn-secondary" (click)="modalRef?.hide()">
+      Não
+    </button>
+  </div>
+
+</ng-template>
