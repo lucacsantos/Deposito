@@ -1,0 +1,7 @@
+<div *ngIf="client">
+  <h2><strong>Editar cliente</strong></h2>
+ <input [(ngModel)]="client.firstName" placeholder="Nome" />
+  <input [(ngModel)]="client.lastName" placeholder="Sobrenome" />
+  <input [(ngModel)]="client.email" placeholder="Email" />
+  <input [(ngModel)]="client.phone" placeholder="Telefone" />
+</div>

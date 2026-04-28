@@ -8,7 +8,7 @@ import { Client } from '../../models/Client';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BsModalRef, BsModalService, ModalModule } from 'ngx-bootstrap/modal';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
-
+import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-client',
   templateUrl: './client.component.html',
@@ -21,7 +21,7 @@ export class ClientComponent implements OnInit {
   clientDelete?: string;
   modalRef?: BsModalRef;
   message?: string;
-
+ 
   private _filterList : string = '';
    private _snackBar = inject(MatSnackBar);
 
@@ -34,10 +34,11 @@ export class ClientComponent implements OnInit {
     this.clientList = this.filterList ? this.filterClient(this.filterList) : this.clients;
   }
 
-  constructor(private clientService : ClientService, private modalService: BsModalService) { }
+  constructor(private clientService : ClientService, private modalService: BsModalService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.getClients()
+  
   }
 
   public filterClient(filter: string): Client[] {
@@ -88,5 +89,8 @@ confirmDelete() {
     }
   });  
 }
-
+edit(id: string) {
+  this.router.navigate(['/clients/edit', id]);
 }
+
+} 

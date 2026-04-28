@@ -23,9 +23,10 @@
       <td>{{client.email}}</td>
       <td>{{client.phone}}</td>
       <td>
-        <button type="button" class="btn btn-primary btn-sm me-2"  tooltip="Editar">
+        <button type="button" class="btn btn-primary btn-sm me-2"  tooltip="Editar" (click)="edit(client.id)">
         <i class="fa-regular fa-pen-to-square" ></i>
         </button>
+
         <button type="button" class="btn btn-danger btn-sm" tooltip="Excluir"  (click)="openModal(template,client.id)" >
           <i class="fa-regular fa-trash-can"></i>
         </button>
@@ -37,9 +38,10 @@
   <div class="modal-body text-center">
     <p>Tem certeza que deseja excluir cliente?</p>
 
-    <button class="btn btn-danger" (click)="confirmDelete()">
+    <button class="btn btn-danger me-2" (click)="confirmDelete()">
       Sim
     </button>
+  
     <button class="btn btn-secondary" (click)="modalRef?.hide()">
       Não
     </button>

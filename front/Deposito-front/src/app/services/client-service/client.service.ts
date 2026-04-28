@@ -22,6 +22,9 @@ public delete(id: string) {
   return this.http.delete<void>(`https://localhost:7036/api/client/${id}`)
 }
 
+public getById(id: string): Observable<Client> {
+  return this.http.get<Client>(`https://localhost:7036/api/client/${id}`)
+}
 
 
 }
